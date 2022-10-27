@@ -1,18 +1,26 @@
 import './App.css';
 import Home from './components/Home';
-import { useState } from 'react';
+import { Component, useState } from 'react';
 import Navbar from './components/Navbar';
 import Contact from './components/Contact';
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 
-function App() {
-  const bootcamp = useState("Rookies");
-  return(
-    <div className="App">
-      <Navbar/>
-      <Home bootcamp={bootcamp}/>
-      <Contact/>
-    </div>
-  );
+class App extends Component {
+  render() {
+    this.state = {bootcamp: "Rookies"};
+    return(
+      <div className="App">
+        <BrowserRouter>
+          <div>
+            <Navbar/>
+            <Routes>
+              <Route exact path="/Home" element={<Home bootcamp={this.statebootcamp}/>}/>
+              <Route exact path="/Contact" element={<Contact/>}/>
+            </Routes>
+          </div>
+        </BrowserRouter>
+      </div>
+    );
+  }
 }
-
 export default App;

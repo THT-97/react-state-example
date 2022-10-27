@@ -11,7 +11,7 @@ class Contact extends Component{
         await axios.get("https://jsonplaceholder.typicode.com/users")
             .then(response=>this.setState({data: response.data}))
             .catch(error=>this.setState({data: error.data}) )
-        console.table(this.state.data[0]);
+        console.log(this.state.data);
     }
 
     render(){
@@ -30,9 +30,12 @@ class Contact extends Component{
             return(
                 <table id="table">
                     <thead>
-                        <th>Id</th>
-                        <th>Name</th>
-                        <th>Email</th>
+                        <tr>
+                            <th>Id</th>
+                            <th>Name</th>
+                            <th>Email</th>  
+                        </tr>
+
                     </thead>
                     <tbody>
                         {/* render table var inside tbody */}
@@ -41,7 +44,6 @@ class Contact extends Component{
             </table>
             );
         }
-
     }
 }
 

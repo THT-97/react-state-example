@@ -1,4 +1,5 @@
-import { Component, useState } from "react";
+import { Component } from "react";
+import { Link } from "react-router-dom";
 
 class Navbar extends Component{
     constructor() {
@@ -10,9 +11,9 @@ class Navbar extends Component{
             // Navbar.js
             <nav id='navbar'>
             <ul>
-                <a href="#"><li>Home</li></a>
-                <a href="#"><li>Contact</li></a>
-                <a href="#"><li>About</li></a>
+                <Link to="/Home"><li>Home</li></Link>
+                <Link to="/Contact"><li>Contact</li></Link>
+                <Link><li>About</li></Link>
             </ul>
             <div className="nav-details">
                 <p className="nav-username"> {this.state.username} </p>
