@@ -1,42 +1,39 @@
-import { Component } from "react";
+import React, { Component, useEffect, useState } from "react";
 
-class Home extends Component{
-    constructor(props){
-        super();
-        this.state = {
-            time: new Date().toLocaleTimeString(),
-            clicks: 0
-        };
-        this.props = props
-    }
-    componentDidMount(){
-        // console.log("Mounted")
+const Home = (props) => {
+    const[time, setTime] = useState(new Date().toLocaleTimeString());
+    const[clicks, setClick]= useState(0);
+    useEffect(()=>{
+        //console.log("Mounted")
         setInterval(() => {
-            this.setState({ time: new Date().toLocaleTimeString() })
+            setTime(new Date().toLocaleTimeString());
         }, 1000);
+    },[])
+
+    const clickGame = ()=>{
+        setClick(clicks+1);
+        if(clicks>0){
+            if(clicks%15===0) return alert("BruhMeh");
+            else if(clicks%5===0) return alert("Meh");
+            else if(clicks%3===0) return alert("Bruh");
+        }
     }
 
-    clickGame() {
-        this.state.clicks++;
-        if(this.state.clicks%15==0) alert("FizzBuzz");
-        else if(this.state.clicks%3==0) alert("Fizz");
-        else if(this.state.clicks%5==0) alert("Buzz");
-    }
-    render(){
-        // console.log(this.props.bootcamp);
-        return(
-            <div>
-                <h2>
-                    Welcome to {this.props.bootcamp}.
-                    It is {this.state.time}
-                </h2>
-                <button onClick={() => this.clickGame()}> 
-                    Clicky Game
-                </button>
-                {this.state.clicks>0?<h4>{this.state.clicks} Clicks</h4>:null}
-            </div>
-        );
-    }
+    useEffect(()=>{
+    }, [clickGame])
+    
+    return(
+        <React.Fragment>
+            <h2>
+                Welcome to {props.bootcamp}.
+                It is {time}
+            </h2>
+            <button onClick={() => clickGame()}> 
+                Clicky Game
+            </button>
+            {clicks>0?clicks>1?<h4>{clicks} clicks</h4>:<h4>{clicks} click</h4>:null}
+        </React.Fragment>
+    );
 }
 
 export default Home
