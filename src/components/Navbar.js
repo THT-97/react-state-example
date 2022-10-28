@@ -13,7 +13,7 @@ class Navbar extends Component{
             <ul>
                 <Link to="/Home"><li>Home</li></Link>
                 <Link to="/Contact"><li>Contact</li></Link>
-                <Link><li>About</li></Link>
+                <Link to="*"><li>About</li></Link>
             </ul>
             <div className="nav-details">
                 <p className="nav-username"> {this.state.username} </p>

@@ -10,8 +10,8 @@ const Home = (props) => {
         }, 1000);
     },[])
 
-    const clickGame = ()=>{
-        setClick(clicks+1);
+    const clickGame = async ()=>{
+        await setClick(clicks+1);
         if(clicks>0){
             if(clicks%15===0) return alert("BruhMeh");
             else if(clicks%5===0) return alert("Meh");
@@ -20,7 +20,8 @@ const Home = (props) => {
     }
 
     useEffect(()=>{
-    }, [clickGame])
+        
+    }, [clicks])
     
     return(
         <React.Fragment>

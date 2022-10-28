@@ -16,6 +16,7 @@ class App extends Component {
             <Routes>
               <Route exact path="/Home" element={<Home bootcamp={this.statebootcamp}/>}/>
               <Route exact path="/Contact" element={<Contact/>}/>
+              <Route exact path="*" element={<h1>Nothing here</h1>}/>
             </Routes>
           </div>
         </BrowserRouter>
